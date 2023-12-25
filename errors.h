@@ -1,0 +1,26 @@
+#ifndef ERRORS_H
+#define ERRORS_H
+// RESULTS FOLLOW A BITFLAG OF u8 (ERROR_TYPE) (ERROR_SPECIFIER)
+// ONLY ERROR_TYPE SHOULD BE TREATED AS A BITFLAG
+// this is a stripped version of microsoft's hresult
+enum HRESULT : unsigned char {
+    S_OK = 0,
+    E_COMMAND_GENERAL_INVALID = 0b10000000, // General command error
+    E_COMMAND_FORMAT_INVALID, // Not X-XXX- ...
+    E_COMMAND_NOT_A_COMMAND, // not a supported command letter e.g Z-XYZ-...
+    E_COMMAND_UNSUPPORTED_CHARS,
+    E_COMMAND_UNKNOWN_DEVICE_TYPE,
+    E_COMMAND_UNKNOWN_STATE,
+    E_COMMAND_VALUE_OUT_OF_RANGE,
+    E_COMMAND_DEVICE_FEATURE_MISMATCH,
+
+    E_STATE_GENERAL_ERROR = 0b01000000,
+    E_STATE_CAPACITY_REACHED,
+    E_STATE_NO_KNOWN_DEVICE,
+    E_STATE_CONFLICTING_DEVICE,
+    E_STATE_PANIC, // something has gone terribly wrong
+    E_STATE_EEPROM_FULL,
+    
+
+};
+#endif
